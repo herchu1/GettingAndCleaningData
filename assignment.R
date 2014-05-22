@@ -1,26 +1,28 @@
 obtaindataset <- function(topdirectory) {
 
-colnames <- read.table(paste(topdirectory, '/features.txt', sep=''))
-names(colnames) = c('n','name')
-nnames <- gsub("[[:punct:]]", "", colnames$name)
-nnames <- tolower(nnames)
-
-nnames <- tolower(nnames)
-nnames <- gsub("^t", "time", nnames)
-nnames <- gsub("^f", "fft", nnames)
-
-grep("mean", nnames, fixed=T)
-grep("std", nnames, fixed=T)
-st <- grepl("std", nnames, fixed=T)
-mn <- grepl("mean", nnames, fixed=T)
-mnst <- st | mn
-
-activities <- read.table(paste(topdirectory, '/activity_labels.txt', sep=''))
-
- train <- obtainsubset(topdirectory, 'train', activities, mnst, nnames)
- test <- obtainsubset(topdirectory, 'test', activities, mnst, nnames)
-
- rbind(train, test)
+  filepath <- paste(topdirectory, '/features.txt', sep='')
+  colnames <- read.table(filepath)
+  names(colnames) = c('n','name')
+  nnames <- gsub("[[:punct:]]", "", colnames$name)
+  nnames <- tolower(nnames)
+  
+  nnames <- tolower(nnames)
+  nnames <- gsub("^t", "time", nnames)
+  nnames <- gsub("^f", "fft", nnames)
+  
+  grep("mean", nnames, fixed=T)
+  grep("std", nnames, fixed=T)
+  st <- grepl("std", nnames, fixed=T)
+  mn <- grepl("mean", nnames, fixed=T)
+  mnst <- st | mn
+  
+  filepath <- paste(topdirectory, '/activity_labels.txt', sep='')
+  activities <- read.table(filepath)
+  
+  train <- obtainsubset(topdirectory, 'train', activities, mnst, nnames)
+  test <- obtainsubset(topdirectory, 'test', activities, mnst, nnames)
+  
+  rbind(train, test)
 }
 
 obtainsubset <- function(topdir, subset, activities, columnset, newnames) {
