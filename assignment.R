@@ -15,21 +15,28 @@ st <- grepl("std", nnames, fixed=T)
 mn <- grepl("mean", nnames, fixed=T)
 mnst <- st | mn
 
-x <- read.table(paste(topdirectory, '/train/X_train.txt', sep=''))
-
-xf <- x[,mnst]
-names(xf) <- nnames[mnst]
-
-
-subjecttrain <- read.table(paste(topdirectory, '/train/subject_train.txt', sep=''))
-names(subjecttrain) <- "subject"
-
 activities <- read.table(paste(topdirectory, '/activity_labels.txt', sep=''))
 
-y_train <- read.table(paste(topdirectory, '/train/y_train.txt', sep=''))
-activitytrain <- cut(y_train[[1]], 6, labels=activities[[2]])
+ train <- obtainsubset(topdirectory, 'train', activities, mnst, nnames)
+ test <- obtainsubset(topdirectory, 'test', activities, mnst, nnames)
 
-train <- cbind(xf, subjecttrain, activity=activitytrain)
+ rbind(train, test)
+}
 
-train
+obtainsubset <- function(topdirectory, subset, activities, columnset, newnames) {
+  filepath <- paste(topdirectory, '/', subset, '/X_', subset, '.txt', sep='')
+  x <- read.table(filepath)
+  
+  xf <- x[,columnset]
+  names(xf) <- newnames[columnset]
+  
+  filepath <- paste(topdirectory, '/', subset, '/subject_', subset, '.txt', sep='')
+  subjectsubset <- read.table(filepath)
+  names(subjectsubset) <- "subject"
+  
+  filepath <- paste(topdirectory, '/', subset, '/y_', subset, '.txt', sep='')
+  y_subset <- read.table(filepath)
+  activitysubset <- cut(y_subset[[1]], 6, labels=activities[[2]])
+  
+  cbind(xf, subjectsubset, activity=activitysubset)
 }
