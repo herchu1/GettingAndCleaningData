@@ -3,3 +3,4 @@
 .RData
 GettingAndCleaningData.Rproj
 UCI HAR Dataset
+.DS_Store
