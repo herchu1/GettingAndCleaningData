@@ -23,18 +23,18 @@ activities <- read.table(paste(topdirectory, '/activity_labels.txt', sep=''))
  rbind(train, test)
 }
 
-obtainsubset <- function(topdirectory, subset, activities, columnset, newnames) {
-  filepath <- paste(topdirectory, '/', subset, '/X_', subset, '.txt', sep='')
+obtainsubset <- function(topdir, subset, activities, columnset, newnames) {
+  filepath <- paste(topdir, '/', subset, '/X_', subset, '.txt', sep='')
   x <- read.table(filepath)
   
   xf <- x[,columnset]
   names(xf) <- newnames[columnset]
   
-  filepath <- paste(topdirectory, '/', subset, '/subject_', subset, '.txt', sep='')
+  filepath <- paste(topdir, '/', subset, '/subject_', subset, '.txt', sep='')
   subjectsubset <- read.table(filepath)
   names(subjectsubset) <- "subject"
   
-  filepath <- paste(topdirectory, '/', subset, '/y_', subset, '.txt', sep='')
+  filepath <- paste(topdir, '/', subset, '/y_', subset, '.txt', sep='')
   y_subset <- read.table(filepath)
   activitysubset <- cut(y_subset[[1]], 6, labels=activities[[2]])
   
