@@ -8,6 +8,10 @@ and lets you obtain a tidy data set in two formats: a full data set
 in R data table type and a comma separated text file with summarized
 content.
 
+### The project
+
+XXX
+
 ### The input
 
 The input consists of the data provided by Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto from the Smartlab - Non Linear Complex
