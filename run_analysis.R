@@ -1,4 +1,11 @@
 
+
+# 
+writetidydata <- function(topdirectory) {
+    ds <- obtaindataset(topdirectory)
+    writedata(ds)
+}
+
 writedata <- function(alldata) {
     compact <- aggregate( .~ subject + activity, data=alldata, mean)
     write.csv(compact, file="tidydata.txt", row.names=F)
