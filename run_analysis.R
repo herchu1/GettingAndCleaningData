@@ -6,6 +6,8 @@
 #
 # process raw Human Activity Recognition Using Smartphones Dataset.
 # Source of the data:
+# Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and
+# Jorge L. Reyes-Ortiz.
 # Human Activity Recognition on Smartphones using a Multiclass
 # Hardware-Friendly Support Vector Machine.
 # International Workshop of Ambient Assisted Living (IWAAL 2012).
