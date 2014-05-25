@@ -10,7 +10,15 @@ content.
 
 ### The project
 
-XXX
+There are three main files in this project:
+
+* This README.md file.
+
+* The run_analysis.R script in R language.
+
+* The tidydata.txt file. The output of the previous script.
+
+* The CodeBook.md file which describes the columns of the data set.
 
 ### The input
 
@@ -76,7 +84,7 @@ Via Opera Pia 11A, I-16145, Genoa, Italy.
 activityrecognition@smartlab.ws
 www.smartlab.ws
 
-[^two] You can download from here XXX.
+[^two] You can download from here [https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip]
 
 
 
